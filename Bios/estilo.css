@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  overflow-x: hidden; /* Evita desplazamiento horizontal */
+}
+
+.background-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* Asegura que el contenedor ocupe al menos la altura de la ventana */
+  overflow: hidden;
+  z-index: 0;
+}
+
+.background-container::before {
+  content: '';
+  display: block;
+  position: fixed; /* Fija la imagen al fondo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5; /* Ajusta la opacidad */
+  background-image: url('../IMG/background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1; /* Asegura que el fondo esté detrás de todo el contenido */
+}
+
+.animate__animated {
+  padding: 1rem 1rem 0.3rem 1rem;
+}
+
+h3{
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 2px black;
+}
+.fotos{
+  text-align: center;
+  align-self: center;
+  padding: 1rem;
+  width: 90%;
+}
+.foto {
+  box-shadow: 3px 3px 5px #535353, -3px -3px 5px #bdbdbd;
+  border: 3px solid white;
+  border-style: ridge;
+  height: auto;
+  max-width: 90%;
+
+}
+
+@media (min-width: 850px) {
+  .foto {
+    box-shadow: 3px 3px 5px #535353, -3px -3px 5px #bdbdbd;
+    border: 3px solid white;
+    border-style: ridge;
+    height: auto;
+    max-width: 60%;
+
+}
+}
+.recuadro{
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+p {
+  font-size: 1rem;
+  padding: 0.3rem 0.5rem;
+  color: #FFFFFF;
+  position: relative; /* Asegúrate de que el texto y los enlaces estén posicionados relativamente */
+  z-index: 1; /* Texto y enlaces con z-index alto */
+  text-shadow: 2px 2px 2px black;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+h2 {
+  font-family: 'Kaushan Script', cursive;
+
+  font-size: 2rem;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+a {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  align-items: center;
+  position: relative; /* Asegúrate de que los enlaces estén posicionados relativamente */
+  z-index: 2; /* Enlaces con z-index más alto */
+  color: #ABB2B9;
+}
+
+.inicio{
+  font-family: Merienda;
+  font-weight: bold;
+  padding: 1rem;
+  font-size: 1.6rem;
+  text-decoration: none;
+
+}
+
+a:hover {
+  color: #FDFEFE;
+  font-size: 1.7rem;
+}
+
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2; /* Asegura que el footer tenga un z-index mayor que el fondo */
+  position: relative; /* Asegura que el footer se posicione correctamente */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 15vh; /* Ajusta la altura según necesites */
+  width: 100%;
+}
+
+footer img {
+
+/*  height: 100%; /* Ajusta la altura de la imagen para que se ajuste al contenedor */
+  width: 90%;
+  max-height: 90%;
+  object-fit: cover;
+}
