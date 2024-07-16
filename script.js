@@ -1,4 +1,3 @@
-// script.js
 document.addEventListener('DOMContentLoaded', function () {
   const videos = [
     'https://www.youtube.com/embed/JlzMXWrwxcM?si=j21O2btyLkRjf0XD',
@@ -25,13 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
     slidesPerView: 1,
     spaceBetween: 10,
     loop: true,
+    navigation: false, // Desactiva la navegación con flechas
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
     },
     breakpoints: {
       640: {
@@ -46,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         slidesPerView: 3,
         spaceBetween: 40,
       },
-    }
+    },
+    touchEventsTarget: 'wrapper', // Habilita los eventos táctiles en el contenedor
   });
 });

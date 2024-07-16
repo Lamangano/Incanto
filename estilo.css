@@ -1,10 +1,19 @@
-body {
+/* Reset general */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+  font-family: 'Roboto', sans-serif;
   background-color: black;
+  color: white;
   overflow-x: hidden; /* Evita desplazamiento horizontal */
 }
 
+/* Contenedor principal con imagen de fondo */
 .background-container {
   position: relative;
   width: 100%;
@@ -13,6 +22,7 @@ body {
   z-index: 0;
 }
 
+/* Fondo con imagen */
 .background-container::before {
   content: '';
   display: block;
@@ -29,92 +39,93 @@ body {
   z-index: -1; /* Asegura que el fondo esté detrás de todo el contenido */
 }
 
-.animate__animated {
-  padding: 1rem 1rem 0.3rem 1rem;
+/* Estilos de animación para el encabezado */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  z-index: 1;
 }
 
+/* Estilos para las redes sociales en el encabezado */
 header ul {
   display: flex;
-  align-items: left;
-  z-index: 1;
   list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
 }
 
 header ul li {
-  padding-left: 1rem;
+  margin-left: 10px;
 }
 
 header a {
   color: rgb(153, 153, 255);
-  font-family: 'Kaushan Script';
+  font-family: 'Kaushan Script', cursive;
   text-decoration: none;
+  transition: color 0.3s ease;
+  text-shadow: 1 1 1 black;
 }
 
-header ul a:hover {
+header a:hover {
   transition: ease-in-out;
   transition: 0.5s;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: rgb(255, 255, 255);
 }
 
-#chico {
-  font-size: 1.2rem;
-  align-self: center;
-  text-align: left;
+/* Estilos para el título del encabezado */
+header img {
+  width: auto;
+  max-height: 5rem;
+  animation: bounce-in 1s ease;
 }
 
-
-/*
-.nos ul{
-  display: flex;
-
-}
-/* Estilo para el elemento de la lista
-.menu-item {
-  position: relative;
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-/* Estilo para el menú desplegable, inicialmente oculto
-.dropdown-menu {
-  display: none;
-  position: absolute;
+/* Estilos generales para el contenido principal */
+main {
+  padding: 20px;
 }
 
-/* Estilo para mostrar el menú cuando se pasa el mouse sobre el elemento de la lista
-.menu-item:hover .dropdown-menu {
-  display: block;
-}
-*/
-* {
-    box-sizing: border-box;
+/* Estilos para los títulos */
+h3, h4 {
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
 }
 
-/*body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-}*/
+h2{
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
 
-hr{
+/* Estilos para los párrafos */
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Estilos para las líneas divisoras */
+hr {
   width: 50%;
-  align-self: auto;
-  box-shadow: 0 1px rgb(14, 14, 14, 0.2);
-}
-h4{
-  font-size: 1.6rem;
-  font-family: serif;
-  color: #E3FAFB;
-  text-shadow: 1px 1px 1px black;
-  padding-left: 10px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 20px auto;
 }
 
+/* Estilos para el carrusel de videos */
 .videos {
-  width: 90%;
+  width: auto;
   margin: 0 auto;
 }
 
@@ -127,19 +138,8 @@ h4{
   text-align: center;
   font-size: 18px;
   background: #000;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
   align-items: center;
 }
 
@@ -160,28 +160,20 @@ h4{
   }
 }
 
-
-
-
-
-
+/* Estilos para el carrusel de imágenes */
 .carousel {
-  position: relative;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  height: 100%; /* Ajusta la altura según sea necesario */
+  margin-top: 20px;
 }
 
 .carousel-container {
   display: flex;
   transition: transform 0.5s ease;
-  padding: 0 20px; /* Añade espacio para los botones */
+  padding: 0 20px;
 }
-
-
-
-
-
 
 .carousel-slide {
   width: 100%; /* Ajusta el ancho al 100% para ocupar todo el contenedor */
@@ -207,50 +199,23 @@ h4{
   font-family: 'Kaushan Script', cursive;
 }
 
-
-
-
-.carousel-slide img:hover{
-    box-shadow: 0 0 20px white;
+.carousel-slide img:hover {
+  box-shadow: 0 0 20px white;
 }
 
-p {
-  font-size: 1rem;
-  padding: 0.3rem 0.5rem;
-  color: #FFFFFF;
-  position: relative; /* Asegúrate de que el texto y los enlaces estén posicionados relativamente */
-  z-index: 1; /* Texto y enlaces con z-index alto */
-  font-family: "Roboto", sans-serif;
-  text-shadow: 1px 1px 1px black;
-}
-
-h2{
-
-  color: white;
-  text-align: center;
-  text-shadow: 1px 1px 2px black;
-}
-h3{
-  text-align: center;
-  text-shadow: 1px 1px 2px white;
-}
-
-
-
+/* Estilos para el pie de página */
 .footer {
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 2; /* Asegura que el footer tenga un z-index mayor que el fondo */
-  position: relative; /* Asegura que el footer se posicione correctamente */
+  z-index: 2;
+  position: relative;
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  height: 15vh; /* Ajusta la altura según necesites */
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
   width: 100%;
 }
 
 footer img {
-
-/*  height: 100%; /* Ajusta la altura de la imagen para que se ajuste al contenedor */
   width: 90%;
   max-height: 90%;
   object-fit: cover;
