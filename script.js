@@ -11,13 +11,34 @@ document.addEventListener('DOMContentLoaded', function () {
     'https://www.youtube.com/embed/4hSx3fP18eo?si=c_3qf7pbYYRfXHlr',
   ];
 
+  const images = [
+    'IMG/1.jpg',
+    'IMG/2.jpg',
+    'IMG/3.jpg',
+    'IMG/4.jpg',
+    'IMG/5.jpg',
+    'IMG/6.jpg',
+    'IMG/7.jpg',
+    'IMG/8.jpg',
+    'IMG/9.jpg',
+  ];
+
   const swiperWrapper = document.querySelector('.swiper-wrapper');
 
   videos.forEach(videoUrl => {
     const slide = document.createElement('div');
     slide.className = 'swiper-slide';
-    slide.innerHTML = `<a href="#" onclick="openVideo('${videoUrl}'); return false;"><iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a>`;
+    slide.innerHTML = `<div class="slide-content" onclick="openVideo('${videoUrl}')"><iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
     swiperWrapper.appendChild(slide);
+  });
+
+  const imageSwiperWrapper = document.querySelector('.image-swiper .swiper-wrapper');
+
+  images.forEach(imageUrl => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = `<img src="${imageUrl}" alt="Image" onclick="openModal('${imageUrl}')">`;
+    imageSwiperWrapper.appendChild(slide);
   });
 
   const swiper = new Swiper('.swiper-container', {
@@ -42,22 +63,65 @@ document.addEventListener('DOMContentLoaded', function () {
         slidesPerView: 3,
         spaceBetween: 40,
       },
+      1400: {
+        slidesPerView: 3,
+        spaceBetween: 50,
+      },
     },
     touchEventsTarget: 'container', // Cambia el target de eventos táctiles a 'container'
   });
 
-  // Desactiva los eventos de clic en el iframe para que no se abra el video
-  swiper.on('beforeInit', function () {
-    swiper.$wrapperEl.off('click');
+  const imageSwiper = new Swiper('.image-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+      1400: {
+        slidesPerView: 4,
+        spaceBetween: 50,
+      },
+    },
   });
 
-  // Activa los eventos de arrastre en todo el swiper-slide excepto en el iframe
-  swiper.on('sliderMove', function (swiper) {
-    const activeSlide = swiper.slides[swiper.activeIndex];
-    const isIframeClicked = activeSlide.querySelector('iframe') && activeSlide.querySelector('iframe').matches(':hover');
-    swiper.allowSlideNext = !isIframeClicked;
-    swiper.allowSlidePrev = !isIframeClicked;
-  });
+  // Modal functionality
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const closeModal = document.getElementsByClassName('close')[0];
+
+  window.openModal = function (src) {
+    modal.style.display = 'block';
+    modalImg.src = src;
+  }
+
+  closeModal.onclick = function () {
+    modal.style.display = 'none';
+  }
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
 });
 
 // Función para abrir el video en una ventana modal o como prefieras

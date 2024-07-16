@@ -1,10 +1,19 @@
-body {
+/* Reset general */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+  font-family: 'Roboto', sans-serif;
   background-color: black;
+  color: white;
   overflow-x: hidden; /* Evita desplazamiento horizontal */
 }
 
+/* Contenedor principal con imagen de fondo */
 .background-container {
   position: relative;
   width: 100%;
@@ -12,6 +21,7 @@ body {
   overflow: hidden;
   z-index: 0;
 }
+
 
 .background-container::before {
   content: '';
@@ -29,8 +39,12 @@ body {
   z-index: -1; /* Asegura que el fondo esté detrás de todo el contenido */
 }
 
+
+
+
 .animate__animated {
   padding: 1rem 1rem 0.3rem 1rem;
+  height: 12vh;
 }
 
 h3{
@@ -110,22 +124,45 @@ a:hover {
   font-size: 1.7rem;
 }
 
-
 .footer {
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 2; /* Asegura que el footer tenga un z-index mayor que el fondo */
-  position: relative; /* Asegura que el footer se posicione correctamente */
+  z-index: 2;
+  position: relative;
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  height: 15vh; /* Ajusta la altura según necesites */
+  justify-content: space-around;
+  align-items: center;
+  height: 13vh;
   width: 100%;
+  overflow: hidden;
+
+}
+
+h2 a{
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: white;
+}
+
+h2 a:hover{
+  transition: ease-in-out;
+  transition: 0.5s;
+  text-shadow:  0 0 20px white;
+  font-size: 1.6rem;
+}
+footer a{
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+}
+footer a:hover {
+  transition: ease-in-out;
+  transition: 0.5s;
+  text-shadow:  0 0 20px white;
+  font-size: 1.5rem;
 }
 
 footer img {
-
-/*  height: 100%; /* Ajusta la altura de la imagen para que se ajuste al contenedor */
-  width: 90%;
-  max-height: 90%;
+  padding-top: 10px;
+  height: 90%;
   object-fit: cover;
 }

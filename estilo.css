@@ -65,7 +65,7 @@ header a {
   font-family: 'Kaushan Script', cursive;
   text-decoration: none;
   transition: color 0.3s ease;
-  text-shadow: 1 1 1 black;
+  text-shadow: 1px 1px 1px black;
 }
 
 header a:hover {
@@ -123,18 +123,11 @@ hr {
   margin: 20px auto;
 }
 
-
-
-
 /* Estilos para el carrusel de videos */
 .videos {
   width: auto;
   margin: 0 auto;
 }
-
-
-
-
 
 .swiper-container {
   width: 100%;
@@ -150,6 +143,16 @@ hr {
   justify-content: center;
   align-items: center;
   cursor: grab; /* Cambia el cursor a un agarre */
+  padding: 10px; /* Ajusta el padding según tu preferencia */
+}
+
+.swiper-slide .slide-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Cambia el cursor a un puntero */
 }
 
 .swiper-slide iframe {
@@ -167,17 +170,6 @@ hr {
     width: 100%; /* Ajusta el ancho de cada slide al 100% para mostrar 1 slide en pantallas pequeñas */
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* Estilos para el carrusel de imágenes */
 .carousel {
@@ -223,19 +215,121 @@ hr {
 }
 
 /* Estilos para el pie de página */
+
+
+/* Estilos para el carrusel de imágenes */
+.gallery-container {
+  margin: 40px 0;
+}
+
+.image-swiper .swiper-slide {
+  width: 100%;
+  height: 200px; /* Ajusta la altura según tu preferencia */
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que las imágenes se recorten para llenar el slide */
+  cursor: pointer;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.modal-content, .close {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
 .footer {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 2;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  height: 15vh;
+  height: 13vh;
   width: 100%;
+  overflow: hidden;
+}
+
+h2 a{
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: white;
+}
+
+h2 a:hover{
+  transition: ease-in-out;
+  transition: 0.5s;
+  text-shadow:  0 0 20px white;
+  font-size: 1.6rem;
+}
+footer a{
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+}
+footer a:hover {
+  transition: ease-in-out;
+  transition: 0.5s;
+  text-shadow:  0 0 20px white;
+  font-size: 1.5rem;
 }
 
 footer img {
-  width: 90%;
-  max-height: 90%;
+  padding-top: 10px;
+  height: 90%;
   object-fit: cover;
 }
