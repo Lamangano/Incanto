@@ -141,11 +141,11 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer; /* Cambia el cursor a pointer para indicar que es clickeable */
 }
 
 .swiper-slide iframe {
-  width: 100%;
-  height: 100%;
+  width: 80%; /* Reducir el ancho del iframe */
 }
 
 @media (min-width: 768px) {
