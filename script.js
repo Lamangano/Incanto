@@ -16,15 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
   videos.forEach(videoUrl => {
     const slide = document.createElement('div');
     slide.className = 'swiper-slide';
-    slide.innerHTML = `<iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    slide.innerHTML = `<a href="#" onclick="openVideo('${videoUrl}'); return false;"><iframe src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></a>`;
     swiperWrapper.appendChild(slide);
   });
 
   const swiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
-    spaceBetween: 10,
+    spaceBetween: 20, // Ajusta el espacio entre los slides según tu preferencia
     loop: true,
-    navigation: false, // Desactiva la navegación con flechas
+    navigation: false,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -43,6 +43,24 @@ document.addEventListener('DOMContentLoaded', function () {
         spaceBetween: 40,
       },
     },
-    touchEventsTarget: 'wrapper', // Habilita los eventos táctiles en el contenedor
+    touchEventsTarget: 'container', // Cambia el target de eventos táctiles a 'container'
+  });
+
+  // Desactiva los eventos de clic en el iframe para que no se abra el video
+  swiper.on('beforeInit', function () {
+    swiper.$wrapperEl.off('click');
+  });
+
+  // Activa los eventos de arrastre en todo el swiper-slide excepto en el iframe
+  swiper.on('sliderMove', function (swiper) {
+    const activeSlide = swiper.slides[swiper.activeIndex];
+    const isIframeClicked = activeSlide.querySelector('iframe') && activeSlide.querySelector('iframe').matches(':hover');
+    swiper.allowSlideNext = !isIframeClicked;
+    swiper.allowSlidePrev = !isIframeClicked;
   });
 });
+
+// Función para abrir el video en una ventana modal o como prefieras
+function openVideo(videoUrl) {
+  window.open(videoUrl, '_blank');
+}
